@@ -1,0 +1,13 @@
+<p> Please add your to-do here!</p>
+
+<!-- Form to add the to-dos -->
+<form [formGroup]="toDoForm" (ngSubmit)="submitToDo()">
+    <div>
+        <!-- To do text -->
+        <label>Enter Your To-Do:</label>
+        <textarea formControlName="title"></textarea>
+    </div>
+
+    <!-- Submit to do button -->
+    <button type="submit">ADD</button>
+</form>
