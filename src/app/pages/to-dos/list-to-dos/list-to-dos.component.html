@@ -1,1 +1,6 @@
-<p>list-to-dos works!</p>
+<div>
+    <h3>FIND YOUR TO-DOs:</h3>
+    <p *ngFor="let toDo of toDoList; let i = index">
+        {{toDo.title}}
+    </p>
+</div>

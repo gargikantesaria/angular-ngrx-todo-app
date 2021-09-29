@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { Store } from '@ngrx/store';
+import AppState from 'src/app/models/to-do-state.model';
+import { addToDoAction } from '../../../store/to-do.actions';
 @Component({
   selector: 'app-add-to-dos',
   templateUrl: './add-to-dos.component.html',
@@ -10,7 +12,7 @@ export class AddToDosComponent implements OnInit {
 
   toDoForm: FormGroup;
 
-  constructor() {
+  constructor(private store: Store<AppState>) {
     // Declare the form here to add the to dos
     this.toDoForm = new FormGroup({
         userId: new FormControl(1, []),
@@ -33,7 +35,8 @@ export class AddToDosComponent implements OnInit {
     this.toDoForm.value.id = Math.floor(Math.random() * 10);
     
     //Dispatch the add to-do event
-
+    this.store.dispatch(new addToDoAction({...this.toDoForm.value}));
+    this.toDoForm.reset();
 
   }
 
