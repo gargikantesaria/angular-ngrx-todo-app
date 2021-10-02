@@ -20,16 +20,16 @@ export class ApiService {
   }
 
   put(body: any, reqOpts?: any) {
-    return this.http.put(this.url, body, reqOpts);
+    return this.http.put(`${this.url}/${body.id}`, body, reqOpts);
   }
 
-  delete() {
+  delete(data:any) {
     // let header = {
     //   headers: new HttpHeaders();
     //     .set('Content-Type', 'application/json'),
     //     body: body || {}
     // }
-    return this.http.delete(this.url);
+    return this.http.delete(`${this.url}/${data}`);
   }
 
   patch(body: any, reqOpts?: any) {

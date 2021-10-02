@@ -36,7 +36,7 @@ export class AddToDosComponent implements OnInit {
     
     //Dispatch the add to-do event
     this.store.dispatch(new addToDoAction({...this.toDoForm.value}));
-    this.toDoForm.reset();
+    this.toDoForm.controls['title'].reset();
 
   }
 

@@ -1,6 +1,11 @@
 <div>
     <h3>FIND YOUR TO-DOs:</h3>
-    <p *ngFor="let toDo of toDoList; let i = index">
+    <div *ngFor="let toDo of toDoList; let i = index">
+        <!-- To Mark To-do complete -->
+        <input type="checkbox" [ngModel]="toDo.completed" (change)="taskStateChange($event, i)">
+        <!-- To-do title -->
         {{toDo.title}}
-    </p>
+        <!-- Delete the to-do -->
+        <button type="button" (click)="deleteToDo(toDo.id)">Delete</button>
+    </div>
 </div>

@@ -6,7 +6,10 @@ export enum ToDoActionTypes {
     ADD_TO_DO = '[TODO] Add To Do',
     
     LIST_TO_DO = '[TODO] Get List To Do',
-    LIST_TO_DO_SUCCESS = '[TODO] Get To Do Success'
+    LIST_TO_DO_SUCCESS = '[TODO] Get To Do Success',
+
+    DELETE_TO_DO = "[TODO] Delete To Do",
+    UPDATE_TO_DO = "[TODO] Update To Do"
 }
 
 
@@ -27,9 +30,23 @@ export class getToDoActionSuccess implements Action{
     constructor(public payload: Todo[]){}
 }
 
+// Action class for delete the to-do
+export class deleteToDoAction implements Action{
+    readonly type = ToDoActionTypes.DELETE_TO_DO;
+    constructor(public payload: number){}
+}
+
+// Action class for update the to-do
+export class updateToDoAction implements Action{
+    readonly type = ToDoActionTypes.UPDATE_TO_DO;
+    constructor(public payload: Todo){}
+}
+
 
 // To export multiple action easily  executable in one word like 'ToDoAction.addToDoAction'
 export type ToDoAction = 
 addToDoAction | 
 getToDoAction | 
-getToDoActionSuccess;
+getToDoActionSuccess |
+deleteToDoAction |
+updateToDoAction;
